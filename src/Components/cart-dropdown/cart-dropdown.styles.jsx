@@ -35,5 +35,26 @@ export const CartItems = styled.div`
   height: 240px;
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+  overflow: auto;
+
+  /* Custom scrollbar styles */
+  scrollbar-width: thin;
+  scrollbar-color: #222 #fff;
+
+  &::-webkit-scrollbar {
+    width: 7px;
+    background: #fff;
+    border-radius: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #222;
+    border-radius: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #fff;
+    border-radius: 8px;
+  }
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
 `;
