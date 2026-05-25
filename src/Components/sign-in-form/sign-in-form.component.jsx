@@ -48,7 +48,6 @@ const SignInForm = () => {
       } else {
         setErrorMessage("An unexpected error occurred.");
       }
-      console.log("Sign-in error:", error.code);
     }
   };
 
