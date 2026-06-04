@@ -1,9 +1,11 @@
-import { useSelector } from 'react-redux';
+import { useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import Button from '../button/button.component';
 import CartItem from '../cart-item/cart-item.component';
 import { selectCartItems } from '../../store/cart/cart.selector';
+import { setIsCartOpen } from '../../store/cart/cart.action.js';
 
 import {
   CartDropdownContainer,
@@ -13,14 +15,30 @@ import {
 
 const CartDropdown = () => {
   const cartItems = useSelector(selectCartItems);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const dropdownRef = useRef(null);
 
   const goToCheckoutHandler = () => {
     navigate('/checkout');
   };
 
+  useEffect(() => {
+    const handleDocumentClick = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        dispatch(setIsCartOpen(false));
+      }
+    };
+
+    document.addEventListener('mousedown', handleDocumentClick);
+
+    return () => {
+      document.removeEventListener('mousedown', handleDocumentClick);
+    };
+  }, [dispatch]);
+
   return (
-    <CartDropdownContainer>
+    <CartDropdownContainer ref={dropdownRef}>
       <CartItems>
         {cartItems.length ? (
           cartItems.map((item) => <CartItem key={item.id} cartItem={item} />)

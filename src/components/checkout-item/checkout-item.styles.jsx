@@ -18,10 +18,28 @@ export const ImageContainer = styled.div`
     width: 100%;
     height: 100%;
   }
+
+  @media screen and (max-width: 900px) {
+    width: 30%;
+  }
+
+  @media screen and (max-width: 640px) {
+    width: 25%;
+  }
 `;
 
 export const BaseSpan = styled.span`
   width: 23%;
+
+  @media screen and (max-width: 900px) {
+    width: 30%;
+  }
+
+  @media screen and (max-width: 640px) {
+    width: 100%;
+    display: block;
+    margin-top: 10px;
+  }
 `;
 
 export const Quantity = styled(BaseSpan)`

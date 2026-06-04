@@ -1,3 +1,7 @@
+html {
+  font-size: 16px;
+}
+
 body {
   margin: 0;
   padding: 20px 40px;
@@ -18,4 +22,17 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+img,
+svg,
+iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 640px) {
+  body {
+    padding: 15px 18px;
+  }
 }
